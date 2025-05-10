@@ -1,7 +1,6 @@
 import { db } from "@/lib/db";
 import { files } from "@/lib/db/schema";
 import { auth } from "@clerk/nextjs/server";
-import { user } from "@heroui/theme";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
@@ -46,7 +45,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json(newFile, {status: 201})
 
     } catch (error) {
-        
+        console.error("Error saving file info to database", error)
         return NextResponse.json({
             error: "Failed to save info to database"
         }, {status: 500})
